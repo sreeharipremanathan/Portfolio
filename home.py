@@ -4,9 +4,9 @@ app = Flask(__name__)
 
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465  # ✅ Use 465 for SSL
+app.config['MAIL_PORT'] = 465  
 app.config['MAIL_USERNAME'] = 'sreeharipremanathan@gmail.com'
-app.config['MAIL_PASSWORD'] = 'wums vxqi wlhr uxgb'  # ✅ Use App Password (see below)
+app.config['MAIL_PASSWORD'] = 'wums vxqi wlhr uxgb'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
