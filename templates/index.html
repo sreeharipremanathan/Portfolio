@@ -3,22 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Portfolio</title>
     <style>
-        .navbar{
-            background-color: #fff;
+        body{
+            background-color: #181818;
         }
-        .nav-item a{
-            color: #007bff;
-            font-size: 1.3vw;
-            font-weight: bold;
+        .sidebar {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
         }
-        .nav-item a:hover{
-            color: #007bff;
-            transform: scale(1.05);
+
+        .nav-item {
+            list-style: none;
         }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #555;
+            color: #f1f1f1;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #00b9de;
+            color: white;
+        }
+
+        /* Bottom Navbar (For Smaller Screens) */
+        .bottom-navbar {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-around;
+            z-index: 1000;
+        }
+
+        .bottom-navbar .nav-link {
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+        }
+
         .profile{
             position: absolute;
             left: 20%;
@@ -32,7 +78,9 @@
         .profile h3{
             font-size: 2vw;
         }
-        
+        p{
+            color: white;
+        }
         .pro-pic{
             width: 100%; 
             max-width: 350px; 
@@ -71,45 +119,55 @@
         .icon-item a{
             color: black;
         }
-        @media (max-width: 576px) { 
-            .nav-item a:hover {
-                color: #007bff; 
-                transform: none;
+        @media (min-width: 769px) {
+            .bottom-navbar {
+                display: none !important;
             }
-            .nav-item a{
-                font-size: 3.3vw;
+        }
+        /* Responsive Media Query */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none; /* Hide sidebar on smaller screens */
+            }
+            .bottom-navbar {
+                display: flex; /* Show bottom navbar on smaller screens */
             }
         }
 
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
-        <div class="container-fluid">
-            <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mynavbar">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#education" class="nav-link">Education</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#skills" class="nav-link">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#projects" class="nav-link">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-      </nav>
+    <ul class="sidebar">
+        <li class="nav-item">
+            <a href="#about" class="nav-link active"><i class="fas fa-home"></i></a>
+        </li>
+        <li class="nav-item">
+            <a href="#about" class="nav-link"><i class="fas fa-user"></i></a>
+        </li>
+        <li class="nav-item">
+            <a href="#skills" class="nav-link"><i class="fas fa-server"></i></a>
+        </li>
+        <li class="nav-item">
+            <a href="#projects" class="nav-link"><i class="fas fa-file-alt"></i></a>
+        </li>
+        <!-- <li class="nav-item">
+            <a href="#resume" class="nav-link"><i class="fas fa-address-book"></i></a>
+        </li> -->
+        <li class="nav-item">
+            <a href="#contact" class="nav-link"><i class="fas fa-phone"></i></a>
+        </li>
+    </ul>
+
+    <!-- Bottom Navbar for Smaller Screens -->
+    <div class="bottom-navbar bg-dark">
+        <a href="#about" class="nav-link active"><i class="fas fa-home"></i></a>
+        <a href="#about" class="nav-link"><i class="fas fa-user"></i></a>
+        <a href="#skills" class="nav-link"><i class="fas fa-server"></i></a>
+        <a href="#projects" class="nav-link"><i class="fas fa-file-alt"></i></a>
+        <!-- <a href="#resume" class="nav-link"><i class="fas fa-address-book"></i></a> -->
+        <a href="#contact" class="nav-link"><i class="fas fa-phone"></i></a>
+    </div>
+
     <!-- about -->
     <div class="container mt-4 mb-4" id="about" style="padding: 50px 20px;">
         <div class="row align-items-center">
@@ -123,11 +181,12 @@
     
             <!-- About Content -->
             <div class="col-lg-8">
-                <h1 class="mb-3 fw-bold text-primary">About Me</h1>
+                <h1 class="mb-3 fw-bold " style="color:#00D4FF;">About Me</h1>
                 <p class="lead">
-                    Hi, I'm <strong class="text-dark">Sreehari</strong>, a passionate 
-                    <span class="text-info">Web Developer</span> with expertise in 
-                    <span class="badge bg-dark">Python</span> 
+                    Hi, I'm <strong class="text-info">Sreehari</strong>, a passionate 
+                    <span class="text-info">Web Developer</span>
+                     <!-- with expertise in  -->
+                    <!-- <span class="badge bg-dark">Python</span> 
                     <span class="badge bg-dark">Django</span> 
                     <span class="badge bg-dark">Flask</span> 
                     <span class="badge bg-dark">React</span> 
@@ -135,7 +194,7 @@
                     <span class="badge bg-dark">HTML</span> 
                     <span class="badge bg-dark">CSS</span> 
                     <span class="badge bg-dark">MySQL</span> 
-                    <span class="badge bg-dark">Bootstrap</span>.  
+                    <span class="badge bg-dark">Bootstrap</span>.   -->
                 </p>
                 <p>
                     I specialize in building dynamic, user-friendly, and scalable web applications. 
@@ -146,19 +205,35 @@
                     I'm always exploring new technologies and refining my skills to stay ahead in the ever-evolving world of web development. 
                     Let's build something amazing together!
                 </p>
-                <a href="#contact" class="btn btn-primary btn-lg mt-3 ">Contact Me</a>
-                <a href=" " class="btn btn-primary btn-lg mt-3 ">Check My Resume</a>
+                <a href="#contact" class="btn btn-info btn-md mt-3 ">Contact Me</a>
+                <a href=" " class="btn btn-info btn-md mt-3 " data-bs-toggle="modal" data-bs-target="#resumeModal">Check My Resume</a>
+                
+                
+                <!-- Modal -->
+                <div class="modal fade" id="resumeModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">My Resume</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <iframe src="{{ url_for('static', filename='file/Hari_CV.pdf') }}" width="100%" height="500px"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     
     <!-- education -->
     <section id="education" style="padding: 50px 20px; " class="mb-4">
-        <h2 style="text-align: center; font-size: 36px; color: #333; margin-bottom: 40px;">My Education</h2>
+        <h2 style="text-align: center; font-size: 36px; color: #00D4FF; margin-bottom: 40px;">My Education</h2>
         
         <div class="education-container" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px;">
             
-            <div class="education-item bg-primary" style="width: 300px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
+            <div class="education-item bg-dark" style="width: 300px; background-color:#00D4FF; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
                 <div class="education-info" style="padding: 20px;">
                     <h3 style="font-size: 24px; color: white;">Met's School of Engineering</h3>
                     <p style="color: white; margin-bottom: 10px;">Computer Engineering(Dipoma)</p>
@@ -167,7 +242,7 @@
             </div>
     
             
-            <div class="education-item bg-primary" style="width: 300px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
+            <div class="education-item bg-dark" style="width: 300px; background-color: #00D4FF; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
                 <div class="education-info" style="padding: 20px;">
                     <h3 style="font-size: 24px; color: white;">St.Thomas HSS Engandiyur</h3>
                     <p style="color: white; margin-bottom: 10px;">Commerce Computer Applications</p>
@@ -176,7 +251,7 @@
             </div>
     
             
-            <div class="education-item bg-primary" style="width: 300px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
+            <div class="education-item bg-dark" style="width: 300px; background-color: #00D4FF; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
                 <div class="education-info" style="padding: 20px;">
                     <h3 style="font-size: 24px; color: white;">St.Thomas HSS Engandiyur</h3>
                     <p style="color: white; margin-bottom: 10px;">SSLC</p>
@@ -188,84 +263,88 @@
     
     
     <!-- skills -->
-    <section id="skills" class="container mt-5 mb-4" style="padding: 60px 20px; ">
-        <h2 class="text-center mb-4">My Skills</h2>
+    <section id="skills" class="container mt-5 mb-4" style="padding: 60px 20px;">
+        <h2 class="text-center mb-4" style="color: #00D4FF; font-weight: bold;">My Skills</h2>
         <div class="row">
             <div class="col-md-6">
-                <label><strong>python</strong></label>
-                <div class="progress mb-3">
-                    <div class="progress-bar bg-primary" style="width: 90%;">90%</div>
-                </div>
-                <label><strong>Django</strong></label>
-                <div class="progress mb-3">
-                    <div class="progress-bar bg-primary" style="width: 90%;">90%</div>
+                <label style="color: #E0E0E0;"><strong>Python</strong></label>
+                <div class="progress mb-3 " style="background-color: #3e3e3e;">
+                    <div class="progress-bar" style="width: 90%; background: linear-gradient(to right, #FFB400, #FF8C00);">90%</div>
                 </div>
     
-                <label><strong>Flask</strong></label>
-                <div class="progress mb-3">
-                    <div class="progress-bar bg-primary" style="width: 85%;">85%</div>
+                <label style="color: #E0E0E0;"><strong>Django</strong></label>
+                <div class="progress mb-3" style="background-color: #3e3e3e;">
+                    <div class="progress-bar" style="width: 90%; background: linear-gradient(to right, #00D4FF, #0096FF);">90%</div>
                 </div>
     
-                <label><strong>React</strong></label>
-                <div class="progress mb-3">
-                    <div class="progress-bar bg-primary" style="width: 80%;">80%</div>
+                <label style="color: #E0E0E0;"><strong>Flask</strong></label>
+                <div class="progress mb-3" style="background-color: #3e3e3e;">
+                    <div class="progress-bar" style="width: 85%; background: linear-gradient(to right, #A66DD4, #8A2BE2);">85%</div>
+                </div>
+    
+                <label style="color: #E0E0E0;"><strong>React</strong></label>
+                <div class="progress mb-3" style="background-color: #3e3e3e;">
+                    <div class="progress-bar" style="width: 80%; background: linear-gradient(to right, #FF5F6D, #FF8E53);">80%</div>
                 </div>
             </div>
     
             <div class="col-md-6">
-                <label><strong>JavaScript</strong></label>
-                <div class="progress mb-3">
-                    <div class="progress-bar bg-primary" style="width: 85%;">85%</div>
+                <label style="color: #E0E0E0;"><strong>JavaScript</strong></label>
+                <div class="progress mb-3" style="background-color: #3e3e3e;">
+                    <div class="progress-bar" style="width: 85%; background: linear-gradient(to right, #FFD700, #FFA500);">85%</div>
                 </div>
     
-                <label><strong>HTML & CSS</strong></label>
-                <div class="progress mb-3">
-                    <div class="progress-bar bg-primary" style="width: 95%;">95%</div>
+                <label style="color: #E0E0E0;"><strong>HTML & CSS</strong></label>
+                <div class="progress mb-3" style="background-color: #3e3e3e;">
+                    <div class="progress-bar" style="width: 95%; background: linear-gradient(to right, #4CAF50, #2E7D32);">95%</div>
                 </div>
     
-                <label><strong>Bootstrap</strong></label>
-                <div class="progress mb-3">
-                    <div class="progress-bar bg-primary" style="width: 90%;">90%</div>
+                <label style="color: #E0E0E0;"><strong>Bootstrap</strong></label>
+                <div class="progress mb-3" style="background-color: #3e3e3e;">
+                    <div class="progress-bar" style="width: 90%; background: linear-gradient(to right, #008080, #004D40);">90%</div>
                 </div>
-                <label><strong>MySQL</strong></label>
-                <div class="progress mb-3">
-                    <div class="progress-bar bg-primary" style="width: 90%;">85%</div>
+    
+                <label style="color: #E0E0E0;"><strong>MySQL</strong></label>
+                <div class="progress mb-3" style="background-color: #3e3e3e;">
+                    <div class="progress-bar" style="width: 85%; background: linear-gradient(to right, #8A2BE2, #6A0DAD);">85%</div>
                 </div>
             </div>
         </div>
     </section>
+ 
+    
 
     <!-- projects -->
     <section id="projects" style="padding: 50px 20px; ">
-        <h2 style="text-align: center; font-size: 36px; color: #333; margin-bottom: 40px;">My Projects</h2>
+        <h2 style="text-align: center; font-size: 36px; color: #333; margin-bottom: 40px; color: #00D4FF;">My Projects</h2>
         
         <div class="projects-container" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px;">
             
-            <div class="project-card" style="width: 300px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
+            <div class="project-card bg-dark" style="width: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
                 <img src="{{ url_for('static',filename='image/puma_clone.png')}}" alt="Project 1" style="width: 100%; height: 200px; object-fit: cover;">
                 <div class="project-info" style="padding: 20px;">
-                    <h3 style="font-size: 24px; color: #333;">Puma Clone</h3>
-                    <p style="color: #555; margin-bottom: 20px;">Front-end clone of Puma website</p>
+                    <h3 style="font-size: 24px; color: white;">Puma Clone</h3>
+                    <p style="color:  white; margin-bottom: 20px;">Front-end clone of Puma website</p>
                     <a href="https://sreeharipremanathan.github.io/puma-clone/" target="_blank" style="color: #fff; background-color: #007bff; padding: 10px 20px; border-radius: 5px; text-decoration: none;">View Project</a>
                 </div>
             </div>
     
            
-            <div class="project-card" style="width: 300px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
+            <div class="project-card bg-dark" style="width: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
                 <img src="{{ url_for('static',filename='image/bookmyshow.png')}}" alt="Project 2" style="width: 100%; height: 200px; object-fit: cover;">
                 <div class="project-info" style="padding: 20px;">
-                    <h3 style="font-size: 24px; color: #333;">Bookmyshow Clone</h3>
-                    <p style="color: #555; margin-bottom: 20px;">Front-end clone of Bookmyshow website</p>
+                    <h3 style="font-size: 24px; color: white;">Bookmyshow Clone</h3>
+                    <p style="color: white; margin-bottom: 20px;">Front-end clone of Bookmyshow website</p>
                     <a href="https://sreeharipremanathan.github.io/book-myshow-clone/" target="_blank" style="color: #fff; background-color: #007bff; padding: 10px 20px; border-radius: 5px; text-decoration: none;">View Project</a>
                 </div>
             </div>
     
             
-            <div class="project-card" style="width: 300px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
+            <div class="project-card bg-dark" style="width: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
                 <img src="{{ url_for('static',filename='image/oppo_clone.png')}}" alt="Project 3" style="width: 100%; height: 200px; object-fit: cover;">
                 <div class="project-info" style="padding: 20px;">
-                    <h3 style="font-size: 24px; color: #333;">Oppo Clone</h3>
-                    <p style="color: #555; margin-bottom: 20px;">Front-end clone of Oppo website</p>
+                    <h3 style="font-size: 24px; color: white;">Oppo Clone</h3>
+                    <p style="color:  white; margin-bottom: 20px;">Front-end clone of Oppo website</p>
                     <a href="https://sreeharipremanathan.github.io/oppo-clone/" target="_blank" style="color: #fff; background-color: #007bff; padding: 10px 20px; border-radius: 5px; text-decoration: none;">View Project</a>
                 </div>
             </div>
@@ -275,30 +354,30 @@
 
 
     <!-- contact -->
-    <div class="container mt-2" id="contact" style="padding-top: 30px;">
-        <div class="contact-form">
-            <h2 class="text-center">Contact Me</h2>
+    <div class="container mt-2 bg" id="contact" style="padding-top: 30px;">
+        <div class="contact-form bg-dark">
+            <h2 class="text-center" style="color: #00D4FF;">Contact Me</h2>
             <form action="/send_mail" method="POST">
                 <div class="mb-3">
-                    <label for="name" class="form-label">Your Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
+                    <label for="name" class="form-label" style="color: #00D4FF;"> Your Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required style="background-color: #3e3e3e; border: none; color: white">
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Your Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <label for="email" class="form-label" style="color: #00D4FF;">Your Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required style="background-color: #3e3e3e; border: none; color: white">
                 </div>
                 <div class="mb-3">
-                    <label for="message" class="form-label">Your Message</label>
-                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    <label for="message" class="form-label" style="color: #00D4FF;">Your Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="4" required style="background-color: #3e3e3e; border: none; color: white"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Send Message</button>
             </form>
         </div>
     </div>
 
-    <footer class="bg-light" style="padding-top: 10px; padding-bottom: 40px;">
+    <footer class="bg-dark" style="padding-top: 10px; padding-bottom: 40px;">
         <div class="container mt-5" style="text-align: center;">
-            <h2 style="text-align: center; font-size: 36px; color: #333; margin-bottom: 40px; margin-top: 40px;">Get In Touch</h2>
+            <h2 style="text-align: center; font-size: 36px; color: #00D4FF; margin-bottom: 40px; margin-top: 40px;">Get In Touch</h2>
             <p>
                 <strong>Email:</strong>sreeharipremanathan@gmail.com
             </p>
@@ -308,23 +387,23 @@
             <p>
             <strong>Address:</strong>Peringhatt (H),Engandiyur,Thrissur
             </p>
-            <ul class="icons" style="list-style: none;">
+            <ul class="icons" style="list-style: none; ">
                 <li class="icon-item" style="padding-right: 15px;">
-                    <a href="https://github.com/sreeharipremanathan">
+                    <a href="https://github.com/sreeharipremanathan" style="color: white;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
                             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
                         </svg>
                     </a>
                 </li>
                 <li class="icon-item" style="padding-right: 15px;">
-                    <a href="https://www.instagram.com/motorista_kid?igsh=MXgwbjlycWRuZjFsZw==">
+                    <a href="https://www.instagram.com/motorista_kid?igsh=MXgwbjlycWRuZjFsZw==" style="color: white;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
                             <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
                         </svg>
                     </a>
                 </li>
                 <li class="icon-item" style="padding-right: 15px;">
-                    <a href="https://wa.me/917510552623">
+                    <a href="https://wa.me/917510552623" style="color: white;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
                             <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
                         </svg>
@@ -334,5 +413,31 @@
         </div>
     </footer>
     
+    <script>
+        // JavaScript to Add Active Class on Scroll
+        document.addEventListener("scroll", function () {
+            let sections = document.querySelectorAll("section");
+            let navLinks = document.querySelectorAll(".nav-link");
+
+            sections.forEach((section) => {
+                let top = window.scrollY;
+                let offset = section.offsetTop - 100;
+                let height = section.offsetHeight;
+                let id = section.getAttribute("id");
+
+                if (top >= offset && top < offset + height) {
+                    navLinks.forEach((link) => {
+                        link.classList.remove("active");
+                        if (link.getAttribute("href") === `#${id}`) {
+                            link.classList.add("active");
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
