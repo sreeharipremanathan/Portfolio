@@ -92,7 +92,7 @@
             transform: scale(1.05); 
         }
         .contact-form {
-            max-width: 600px;
+            max-width: 800px;
             margin: 50px auto;
             background: white;
             padding: 20px;
@@ -322,10 +322,10 @@
     
            
             <div class="project-card bg-dark" style="width: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; text-align: center;">
-                <img src="{{ url_for('static',filename='image/bookmyshow.png')}}" alt="Project 2" style="width: 100%; height: 200px; object-fit: cover;">
+                <img src="{{ url_for('static',filename='image/cargo.png')}}" alt="Project 2" style="width: 100%; height: 200px; object-fit: cover;">
                 <div class="project-info" style="padding: 20px;">
-                    <h3 style="font-size: 24px; color: white;">Bookmyshow Clone</h3>
-                    <p style="color: white; margin-bottom: 20px;">Front-end clone of Bookmyshow website</p>
+                    <h3 style="font-size: 24px; color: white;">Cargo Rentals</h3>
+                    <p style="color: white; margin-bottom: 20px;">A car rental application</p>
                     <a href="https://sreeharipremanathan.github.io/book-myshow-clone/" target="_blank" style="color: #fff; background-color: #007bff; padding: 10px 20px; border-radius: 5px; text-decoration: none;">View Project</a>
                 </div>
             </div>
@@ -346,18 +346,18 @@
 
     <!-- contact -->
     <div class="container mt-2 bg" id="contact" style="padding-top: 30px;">
-        <div class="contact-form bg-dark">
+        <div class="contact-form bg-dark" style="width: 100%;">
             <h2 class="text-center" style="color: #00D4FF;">Contact Me</h2>
             <form action="/send_mail" method="POST">
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="name" class="form-label" style="color: #00D4FF;"> Your Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required style="background-color: #3e3e3e; border: none; color: white">
+                    <input type="text" class="form-control" id="name" name="name" required style="background-color: #3e3e3e; border: none; color: white" >
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="email" class="form-label" style="color: #00D4FF;">Your Email</label>
                     <input type="email" class="form-control" id="email" name="email" required style="background-color: #3e3e3e; border: none; color: white">
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="message" class="form-label" style="color: #00D4FF;">Your Message</label>
                     <textarea class="form-control" id="message" name="message" rows="4" required style="background-color: #3e3e3e; border: none; color: white"></textarea>
                 </div>
